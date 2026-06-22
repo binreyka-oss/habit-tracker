@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Летопись Державы — ежедневник и трекер привычек с персонажами, прокачкой и большими квестами."
+    />
+    <meta name="theme-color" content="#1d1714" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Летопись Державы" />
+    <title>Летопись Державы</title>
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icon-192.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar panel">
+        <div class="brand">
+          <div class="brand-mark">Л</div>
+          <div>
+            <p class="eyebrow">Личный штаб</p>
+            <h1>Летопись Державы</h1>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-item active">Держава</button>
+          <button class="nav-item">Сегодня</button>
+          <button class="nav-item">Поручения</button>
+          <button class="nav-item">Привычки</button>
+          <button class="nav-item">Персонажи</button>
+          <button class="nav-item">Казна</button>
+          <button class="nav-item">Лавка</button>
+        </nav>
+
+        <section class="sidebar-section">
+          <p class="section-label">Отряд</p>
+          <div id="team" class="team-list"></div>
+        </section>
+
+        <section class="sidebar-section">
+          <p class="section-label">Сезон</p>
+          <div class="season-card">
+            <strong>Неделя стойкости</strong>
+            <span>Кампания на 7 дней</span>
+          </div>
+        </section>
+
+        <section class="sidebar-section">
+          <p class="section-label">Клятвы</p>
+          <ul class="oath-list">
+            <li>Ложиться до 23:30</li>
+            <li>Поддерживать тело трижды в неделю</li>
+            <li>Учиться каждый день минимум 60 минут</li>
+          </ul>
+        </section>
+      </aside>
+
+      <main class="content">
+        <header class="hero panel">
+          <div>
+            <p class="eyebrow">Сегодня</p>
+            <h2 id="hero-title">Персонаж ведёт свою кампанию дня</h2>
+            <p id="hero-copy" class="hero-copy">
+              Планируй день, закрывай поручения, поддерживай привычки и
+              превращай дисциплину в рост персонажа.
+            </p>
+          </div>
+          <div class="hero-status">
+            <div class="status-pill">
+              <span>Опыт</span>
+              <strong id="xp-pill">0 / 100</strong>
+            </div>
+            <div class="status-pill">
+              <span>Казна</span>
+              <strong id="gold-pill">0 золота</strong>
+            </div>
+            <div class="status-pill">
+              <span>Уровень</span>
+              <strong id="level-pill">1</strong>
+            </div>
+          </div>
+        </header>
+
+        <section class="dashboard-grid">
+          <section class="planner panel">
+            <div class="section-heading">
+              <div>
+                <p class="section-label">Поручения</p>
+                <h3>Совет на день</h3>
+              </div>
+              <span id="quest-summary" class="heading-note"></span>
+            </div>
+            <div id="tasks" class="task-list"></div>
+          </section>
+
+          <section class="big-quests panel">
+            <div class="section-heading">
+              <div>
+                <p class="section-label">Большие квесты</p>
+                <h3>Дальние кампании</h3>
+              </div>
+              <span class="heading-note">Зависят от характеристик и действий</span>
+            </div>
+            <div id="big-quests" class="big-quest-list"></div>
+          </section>
+
+          <section class="habits panel">
+            <div class="section-heading">
+              <div>
+                <p class="section-label">Привычки</p>
+                <h3>Ритуалы устойчивости</h3>
+              </div>
+              <span class="heading-note">Удерживай порядок в державе</span>
+            </div>
+            <div id="habits" class="habit-grid"></div>
+          </section>
+
+          <section class="notes panel">
+            <div class="section-heading">
+              <div>
+                <p class="section-label">Журнал</p>
+                <h3>Личная хроника</h3>
+              </div>
+              <span class="heading-note">Отдельно для каждого персонажа</span>
+            </div>
+            <textarea
+              id="journal"
+              placeholder="Запиши намерение, награду, план или итог именно для текущего персонажа..."
+            ></textarea>
+          </section>
+
+          <section class="editor panel">
+            <div class="section-heading">
+              <div>
+                <p class="section-label">Редактор</p>
+                <h3>Свои персонажи и квесты</h3>
+              </div>
+              <span class="heading-note">Все изменения сохраняются между запусками</span>
+            </div>
+            <div id="editor" class="editor-layout"></div>
+          </section>
+        </section>
+      </main>
+
+      <aside class="character-rail panel">
+        <section class="character-card">
+          <div class="portrait-frame">
+            <div class="portrait-glow"></div>
+            <div class="portrait">
+              <span id="portrait-icon">⚔</span>
+            </div>
+          </div>
+          <div class="character-copy">
+            <p class="section-label">Персонаж</p>
+            <h3 id="character-name">Хранитель Дисциплины</h3>
+            <p id="character-role" class="heading-note">Работа и ключевые проекты</p>
+            <p id="rank-label" class="rank-label">Молодой сенешаль</p>
+          </div>
+        </section>
+
+        <section class="rail-block">
+          <div class="rail-head">
+            <h4>Прогресс</h4>
+            <span id="progress-copy">0%</span>
+          </div>
+          <div class="xp-bar">
+            <div id="xp-fill" class="xp-fill"></div>
+          </div>
+        </section>
+
+        <section class="rail-block">
+          <div class="rail-head">
+            <h4>Характеристики</h4>
+            <span>Прокачка влияет на квесты</span>
+          </div>
+          <div id="stats" class="stats-list"></div>
+        </section>
+
+        <section class="rail-block">
+          <div class="rail-head">
+            <h4>Дворцовая лавка</h4>
+            <span>Улучшай активного героя</span>
+          </div>
+          <div id="shop" class="shop-list"></div>
+        </section>
+
+        <section class="rail-block">
+          <div class="rail-head">
+            <h4>Положение державы</h4>
+            <span id="streak-copy">Серия 0 дней</span>
+          </div>
+          <div class="standing-grid">
+            <div>
+              <span>Дел закрыто</span>
+              <strong id="tasks-done">0</strong>
+            </div>
+            <div>
+              <span>Привычек удержано</span>
+              <strong id="habits-kept">0</strong>
+            </div>
+            <div>
+              <span>Дисциплина</span>
+              <strong id="discipline-score">0</strong>
+            </div>
+            <div>
+              <span>Улучшений</span>
+              <strong id="upgrades-bought">0</strong>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <script src="./app.js"></script>
+    <script>
+      if ("serviceWorker" in navigator && window.location.protocol !== "file:") {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>
