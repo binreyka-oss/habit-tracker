@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "builds": [
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "app.js", "use": "@vercel/static" },
+    { "src": "styles.css", "use": "@vercel/static" },
+    { "src": "service-worker.js", "use": "@vercel/static" },
+    { "src": "manifest.webmanifest", "use": "@vercel/static" },
+    { "src": "icon.svg", "use": "@vercel/static" },
+    { "src": "icon-192.svg", "use": "@vercel/static" },
+    { "src": "icon-512.svg", "use": "@vercel/static" }
+  ]
+}
