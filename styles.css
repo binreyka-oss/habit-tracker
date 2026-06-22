@@ -52,10 +52,12 @@ textarea {
 
 .app-shell {
   display: grid;
-  grid-template-columns: 280px minmax(0, 1fr) 360px;
-  gap: 20px;
+  grid-template-columns: 300px minmax(860px, 1fr) 380px;
+  gap: 24px;
   min-height: 100vh;
-  padding: 20px;
+  max-width: 1720px;
+  margin: 0 auto;
+  padding: 24px;
 }
 
 .panel {
@@ -275,13 +277,14 @@ h1 {
 .content {
   display: grid;
   gap: 20px;
+  min-width: 0;
 }
 
 .hero {
-  padding: 28px;
+  padding: 34px 36px;
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  gap: 28px;
   align-items: end;
 }
 
@@ -293,17 +296,17 @@ h1 {
 }
 
 .hero-copy {
-  max-width: 60ch;
+  max-width: 68ch;
   margin-top: 14px;
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 1.05rem;
+  line-height: 1.75;
 }
 
 .hero-status {
   display: grid;
   grid-template-columns: repeat(3, minmax(120px, 1fr));
-  gap: 12px;
-  min-width: 330px;
+  gap: 14px;
+  min-width: 390px;
 }
 
 .status-pill {
@@ -324,8 +327,8 @@ h1 {
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 20px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 24px;
 }
 
 .planner,
@@ -333,15 +336,19 @@ h1 {
 .habits,
 .notes,
 .editor {
-  padding: 24px;
+  padding: 28px;
 }
 
 .planner {
-  grid-row: span 3;
+  grid-row: span 2;
 }
 
 .editor {
   grid-column: 1 / -1;
+}
+
+.notes {
+  grid-column: 2;
 }
 
 .section-heading,
@@ -367,6 +374,10 @@ h1 {
   gap: 14px;
 }
 
+.habit-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .editor-layout,
 .editor-stack,
 .editor-subgrid,
@@ -376,7 +387,7 @@ h1 {
 }
 
 .editor-layout {
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
 }
 
 .editor-card,
@@ -497,7 +508,7 @@ h1 {
 .task-card,
 .habit-card,
 .big-quest {
-  padding: 16px;
+  padding: 18px;
 }
 
 .task-card {
@@ -640,7 +651,7 @@ textarea:focus {
 }
 
 .character-card {
-  padding-bottom: 22px;
+  padding-bottom: 26px;
   border-bottom: 1px solid rgba(223, 194, 126, 0.14);
 }
 
@@ -674,7 +685,7 @@ textarea:focus {
 }
 
 .rail-block {
-  padding-top: 22px;
+  padding-top: 24px;
 }
 
 .xp-bar {
@@ -740,6 +751,16 @@ textarea:focus {
   font-size: 1.2rem;
 }
 
+@media (max-width: 1440px) {
+  .app-shell {
+    grid-template-columns: 260px minmax(0, 1fr) 320px;
+  }
+
+  .habit-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 1180px) {
   .app-shell {
     grid-template-columns: 240px minmax(0, 1fr);
@@ -754,6 +775,10 @@ textarea:focus {
 
   .character-card {
     grid-column: 1 / -1;
+  }
+
+  .notes {
+    grid-column: auto;
   }
 }
 
