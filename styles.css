@@ -52,10 +52,10 @@ textarea {
 
 .app-shell {
   display: grid;
-  grid-template-columns: 300px minmax(860px, 1fr) 380px;
+  grid-template-columns: 280px minmax(0, 1fr) 340px;
   gap: 24px;
   min-height: 100vh;
-  max-width: 1720px;
+  max-width: 1680px;
   margin: 0 auto;
   padding: 24px;
 }
@@ -361,6 +361,13 @@ h1 {
   gap: 16px;
 }
 
+.section-heading > *,
+.rail-head > *,
+.big-quest-head > *,
+.big-quest-foot > * {
+  min-width: 0;
+}
+
 .section-heading {
   margin-bottom: 18px;
 }
@@ -574,11 +581,14 @@ h1 {
   display: flex;
   justify-content: space-between;
   gap: 12px;
+  align-items: start;
 }
 
 .habit-actions {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .habit-action,
@@ -590,6 +600,23 @@ h1 {
   color: var(--text);
   padding: 10px 14px;
   cursor: pointer;
+}
+
+.big-quest-copy,
+.heading-note,
+.quest-state,
+.habit-card h4,
+.big-quest h4,
+.shop-item h4 {
+  overflow-wrap: anywhere;
+}
+
+.big-quest-foot {
+  align-items: center;
+}
+
+.big-quest-foot button {
+  flex: 0 0 auto;
 }
 
 .big-quest.ready {
@@ -751,19 +778,9 @@ textarea:focus {
   font-size: 1.2rem;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1560px) {
   .app-shell {
-    grid-template-columns: 260px minmax(0, 1fr) 320px;
-  }
-
-  .habit-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 1180px) {
-  .app-shell {
-    grid-template-columns: 240px minmax(0, 1fr);
+    grid-template-columns: 250px minmax(0, 1fr);
   }
 
   .character-rail {
@@ -776,9 +793,26 @@ textarea:focus {
   .character-card {
     grid-column: 1 / -1;
   }
+}
 
+@media (max-width: 1180px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .planner,
   .notes {
     grid-column: auto;
+    grid-row: auto;
+  }
+
+  .habit-grid,
+  .character-rail {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -802,9 +836,19 @@ textarea:focus {
   .dashboard-grid,
   .editor-layout,
   .editor-subgrid,
-  .character-rail,
   .standing-grid {
     grid-template-columns: 1fr;
+  }
+
+  .big-quest-foot,
+  .habit-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .big-quest-foot button,
+  .habit-action {
+    width: 100%;
   }
 }
 
