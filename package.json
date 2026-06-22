@@ -1,0 +1,10 @@
+{
+  "name": "chronicle-of-realm",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Локальная PWA-версия приложения Летопись Державы",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}
